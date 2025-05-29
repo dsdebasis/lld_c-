@@ -6,7 +6,12 @@ using namespace std;
 
 class Car
 {
+
 public:
+
+  /*
+    here we abstract out all the methods , basically we just have the concept of the methods , we do not have any implementation , we just have the concept . The implementation will be done in the child classes
+ */
     virtual void startEnginee() = 0;
     virtual void stopEnginee() = 0;
     virtual void shiftGear(int gear) = 0;
@@ -19,6 +24,7 @@ public:
     virtual ~Car() {}
 };
 
+// this is the child class who is making the implementation of the abstract class
 class RacingCar : public Car
 {
 
