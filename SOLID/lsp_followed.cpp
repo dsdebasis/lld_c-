@@ -25,7 +25,9 @@ public:
     {
         balance = 0;
     }
-
+    
+    private:
+   
     void deposit(double amnt) override
     {
         this->balance += amnt;
@@ -62,22 +64,26 @@ public:
     }
 };
 
-class Deposit
+class DepositForSaving :public SavingAccount
 {
 public:
-    Deposit(SavingAccount *sav, double deposit_amnt)
+    void deposit(SavingAccount *sav, double deposit_amnt)
     {
 
         sav->deposit(deposit_amnt);
     }
-
-    Deposit(FixedDepositAccout *fix, double fit_depo_amnt, SavingAccount *sav, double sav_depo_amnt)
-    {
-        fix->deposit(fit_depo_amnt);
-        sav->deposit(sav_depo_amnt);
-    }
+   
+   
 };
 
+class DepositForFix_Saving : public DepositForSaving{
+
+ DepositForFix_Saving( FixedDepositAccout *fix, double fix_depo_amnt,SavingAccount *sav, double sav_depo_amnt){
+    fix->deposit(fix_depo_amnt);
+    sav->deposit(sav_depo_amnt);
+ }
+
+};
 class withdraw
 {
 public:
@@ -89,14 +95,16 @@ public:
 
 int main()
 {
-    SavingAccount* sa1 = new SavingAccount();
-    SavingAccount* sa2 = new SavingAccount();
-    FixedDepositAccout* fa1 = new FixedDepositAccout();
+   SavingAccount* sa1 = new SavingAccount();
+   SavingAccount* sa2 = new SavingAccount();
 
-    Deposit* depo1 = new Deposit(sa1, 600);
-    Deposit* depo2 = new Deposit(fa1, 500, sa2, 400);
-    withdraw* wit1 = new withdraw(sa1, 200);
+//    DepositForSaving* ds = new DepositForSaving(); 
+//    ds->deposit(sa1,2000);
    
-
+   FixedDepositAccout* fd1 = new FixedDepositAccout();
+   DepositForFix_Saving* dfs = new DepositForFix_Saving(fd1,6500,sa2,45000);
+   
+ 
+ 
     return 0;
 }
