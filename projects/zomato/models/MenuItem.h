@@ -23,7 +23,7 @@ class MenuItem {
             id = i;
             
         }
-        string getName() {
+        string getName() const{
             return name;
         }
 
@@ -31,7 +31,7 @@ class MenuItem {
             name = n;
         }
         
-        double getPrice() {
+        double getPrice() const{
             return price;
         }
 

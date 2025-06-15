@@ -1,10 +1,10 @@
 #ifndef DELIVERY_ORDER_H
 #define DELIVERY_ORDER_H
 
-#include "Order.h"
+#include "./Order.h"
 using namespace std;
 
-class DeliveryOrder: public Order{
+class DeliveryOrder: public Order {
  private:
  string userAddress;
 
@@ -12,7 +12,7 @@ class DeliveryOrder: public Order{
     DeliveryOrder(){
         userAddress = "";
     }
-    string getType(){
+    string getType() const override{
         return "Delivery";
     }
 

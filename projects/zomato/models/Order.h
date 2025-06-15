@@ -31,9 +31,9 @@ public:
         paymentStrategy = nullptr;
         total = 0.0;
         scheduled = "";
-        orderId = nextOrderId++;
+        orderId = ++nextOrderId;
     }
-    ~Order(){
+    virtual ~Order(){
         delete paymentStrategy;
     }
 
@@ -101,4 +101,4 @@ public:
 };
 int Order::nextOrderId = 0;
 
-#endif;
+#endif

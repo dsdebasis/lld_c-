@@ -32,7 +32,7 @@ class Cart{
                double sum = 0;
 
                for(const auto& item : items){
-                   sum += item->getPrice();
+                   sum += item.getPrice();
                }
                return sum;
         }
